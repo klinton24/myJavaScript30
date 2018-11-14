@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{
+      name: 'Sadie',
+      age: 2
+    }, {
+      name: 'Hugo',
+      age: 8
+    }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#006400';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("hello");
+
+    /* Interpolated
+    In computer programming, string interpolation (or variable interpolation, variable substitution, or variable expansion)
+    is the process of evaluating a string literal containing one or more placeholders, yielding a result in which the 
+    placeholders are replaced with their corresponding values.*/
+    console.log('Hello I am %s string!', 'interpolated')
+
+    //Can also just now use ES6 Backticks
+    var1 = "cool and new";
+    console.log(`Hello I am a ${var1} string!`)
+    // Styled
+    console.log('%c I am some great text', 'font-size:15px; color:blue')
+
+    // warning!
+    console.warn("Displaying a Warning!");
+
+    // Error :|
+    console.error("This is just a Test, not a real error!");
+
+    // Info
+    console.info("Crocodiles only eat dumb people.");
+
+    // Testing, asserts if something is true or false, only prints to the console if false
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'This is the wrong element!');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    console.clear();
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+
+    console.count('Klinton');
+    console.count('Klinton');
+    console.count('Honoka');
+    console.count('Honoka');
+    console.count('Klinton');
+    console.count('Honoka');
+    console.count('Klinton');
+    console.count('Honoka');
+    console.count('Honoka');
+    console.count('Honoka');
+    console.count('Honoka');
+    console.count('Honoka');
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/klinton24')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+  </script>
+</body>
+
+</html>
